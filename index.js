@@ -28,8 +28,10 @@ module.exports = {
             return;
         }
 
-        if (app.env === 'development') {
-            app.import('vendor/electron/reload.js');
+        if (app.env !== 'production') {
+            app.import({
+                development: 'vendor/electron/reload.js'
+            });
         }
 
         if (process.env.ELECTRON_TESTS_DEV) {
